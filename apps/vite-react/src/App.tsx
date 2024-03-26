@@ -2,8 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import Button from "ui/Button";
-import Message from "ui/Message";
+import { Button, Message } from "ui";
 
 function App() {
   const [count, setCount] = useState(0);

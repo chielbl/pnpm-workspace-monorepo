@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
 interface ButtonProps {
   text: string;
@@ -6,7 +6,7 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({ text, onClick }) => {
-  return <button onClick={onClick}>{text}</button>;
+  return <button onClick={onClick}>{text} test</button>;
 };
 
 export default Button;
