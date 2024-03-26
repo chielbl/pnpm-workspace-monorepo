@@ -6,7 +6,7 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({ text, onClick }) => {
-  return <button onClick={onClick}>{text} test</button>;
+  return <button className="btn" onClick={onClick}>{text} test</button>;
 };
 
 export default Button;
