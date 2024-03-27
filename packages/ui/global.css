@@ -1,2 +1,19 @@
-@import 'pollen.css';
-@import './src/button/style.css';
+@import "pollen.css";
+@import "./src/button/style.css";
+
+root {
+  --color-bg: var(--color-primary-50, white);
+  --color-text: var(--color-primary-900, black);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: var(--color-primary-900, black);
+    --color-text: var(--color-primary-50, white);
+  }
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
