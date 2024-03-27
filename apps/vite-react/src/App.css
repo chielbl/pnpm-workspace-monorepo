@@ -1,0 +1,11 @@
+@import "ui/global.css";
+
+:root {
+  --color-bg: lightgrey;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: darkgrey;
+  }
+}
