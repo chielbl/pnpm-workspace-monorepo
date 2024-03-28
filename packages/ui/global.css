@@ -2,14 +2,14 @@
 @import "./src/button/style.css";
 
 root {
-  --color-bg: var(--color-primary-50, white);
-  --color-text: var(--color-primary-900, black);
+  --color-bg: var(--color-base-100, white);
+  --color-text: var(--color-base-content, black);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: var(--color-primary-900, black);
-    --color-text: var(--color-primary-50, white);
+    --color-bg: var(--color-base-content, black);
+    --color-text: var(--color-base-100, white);
   }
 }
 
