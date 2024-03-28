@@ -6,5 +6,9 @@
     "eslint"
   ], 
   "author": "Chiel Bleyenbergh",
-  "license": "ISC"
+  "license": "ISC",
+  "main": "index.js",
+    "exports": {
+    "./eslint/*": "./eslint/*.js"
+  }
 }
