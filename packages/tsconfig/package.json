@@ -2,7 +2,11 @@
   "name": "@repo/tsconfig",
   "version": "1.0.0",
   "private": true,
-  "description": "includes typescript configuration for the project",
+  "description": "Includes typescript configuration for the project",
+  "keywords": [
+    "typescript",
+    "tsconfig"
+  ],
   "author": "Chiel Bleyenbergh",
   "license": "ISC"
 }
