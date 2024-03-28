@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "ui";
+import { Button } from "@repo/ui";
 import "./App.css";
 
 function App() {
