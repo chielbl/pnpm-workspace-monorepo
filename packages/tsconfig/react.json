@@ -1,0 +1,12 @@
+{
+  "extends": "./base.json",
+  "Display": "React typescript configuration",
+
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "noEmit": true
+  },
+  "include": ["src"]
+}

@@ -1,11 +1,25 @@
+// https://www.totaltypescript.com/tsconfig-cheat-sheet
 {
+  "Display": "Base Configuration",
   "compilerOptions": {
+    // Basic Options
+    "lib": ["es2022"],
+    "target": "es2022",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "target": "es2022",
     "allowJs": true,
     "resolveJsonModule": true,
+    "isolatedModules": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "moduleDetection": "force",
-    "isolatedModules": true
+    "sourceMap": true,
+
+    // Strictness
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true
   }
 }
