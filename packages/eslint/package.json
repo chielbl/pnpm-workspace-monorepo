@@ -2,13 +2,11 @@
   "name": "@repo/eslint",
   "version": "1.0.0",
   "description": "Includes ESLint and Prettier",
-  "keywords": [
-    "eslint"
-  ], 
+  "keywords": ["eslint"],
   "author": "Chiel Bleyenbergh",
   "license": "ISC",
   "main": "index.js",
-    "exports": {
+  "exports": {
     "./eslint/*": "./eslint/*.js"
   }
 }
