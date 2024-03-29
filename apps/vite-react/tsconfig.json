@@ -1,5 +1,5 @@
 {
-  "extends": ["@repo/tsconfig/base.json","@repo/tsconfig/react.json"],
+  //"extends": ["@repo/config/typescript/base.json","@repo/config/typescript/react.json"],
 
   "compilerOptions": {
     /* Bundler mode */

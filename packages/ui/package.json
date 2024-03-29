@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@repo/tsconfig": "workspace:^",
+    "@repo/config": "workspace:^",
     "pollen-css": "^4.6.2",
     "react": "^18.2.0"
   },

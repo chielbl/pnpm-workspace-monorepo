@@ -10,12 +10,9 @@ importers:
 
   apps/vite-react:
     dependencies:
-      '@repo/eslint':
+      '@repo/config':
         specifier: workspace:^
-        version: link:../../packages/eslint
-      '@repo/tsconfig':
-        specifier: workspace:^
-        version: link:../../packages/tsconfig
+        version: link:../../packages/config
       '@repo/ui':
         specifier: workspace:^
         version: link:../../packages/ui
@@ -57,15 +54,17 @@ importers:
         specifier: ^5.2.0
         version: 5.2.6
 
+  packages/config: {}
+
   packages/eslint: {}
 
   packages/tsconfig: {}
 
   packages/ui:
     dependencies:
-      '@repo/tsconfig':
+      '@repo/config':
         specifier: workspace:^
-        version: link:../tsconfig
+        version: link:../config
       pollen-css:
         specifier: ^4.6.2
         version: 4.6.2

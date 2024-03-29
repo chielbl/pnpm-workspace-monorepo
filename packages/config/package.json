@@ -1,0 +1,13 @@
+{
+  "name": "@repo/config",
+  "version": "1.0.0",
+  "description": "Includes all the configurations files for tsconfig, ESLint and Prettier",
+  "keywords": ["typescript", "tsconfig", "eslint", "prettier"],
+  "author": "Chiel Bleyenbergh",
+  "license": "ISC",
+  "files": ["eslint", "typescript"],
+  "exports": {
+    "./eslint/*": "./eslint/*.js",
+    "./typescript/*": "./typescript/*.json"
+  }
+}
