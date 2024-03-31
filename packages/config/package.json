@@ -2,12 +2,34 @@
   "name": "@repo/config",
   "version": "1.0.0",
   "description": "Includes all the configurations files for tsconfig, ESLint and Prettier",
-  "keywords": ["typescript", "tsconfig", "eslint", "prettier"],
+  "keywords": [
+    "typescript",
+    "tsconfig",
+    "eslint",
+    "prettier"
+  ],
   "author": "Chiel Bleyenbergh",
   "license": "ISC",
-  "files": ["eslint", "typescript"],
+  "files": [
+    "eslint",
+    "typescript"
+  ],
   "exports": {
     "./eslint/*": "./eslint/*.js",
     "./typescript/*": "./typescript/*.json"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.3",
+    "@next/eslint-plugin-next": "^14.1.4",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.3"
   }
 }
