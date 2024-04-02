@@ -3,11 +3,11 @@ const { defineConfig } = require("pollen-css/utils");
 module.exports = defineConfig((pollen) => ({
   modules: {
     color: {
-      "primary": "#97E7E1",
+      primary: "#97E7E1",
       "primary-content": "#1b5154",
-      "secondary": "#6AD4DD",
+      secondary: "#6AD4DD",
       "secondary-content": "#224a57",
-      "accent": "#5880d9",
+      accent: "#5880d9",
       "accent-content": "#e0e9f9",
       "base-100": "#F8F6E3",
       "base-200": "#f4f1cd",
@@ -15,5 +15,15 @@ module.exports = defineConfig((pollen) => ({
       "base-content": "#614022",
     },
     ease: false,
+  },
+  media: {
+    "(prefers-color-scheme: dark)": {
+      color: {
+        primary: "#1b5154",
+        "primary-content": "#d2f5f1",
+        secondary: "#224a57",
+        "secondary-content": "#d7f5f6",
+      },
+    },
   },
 }));

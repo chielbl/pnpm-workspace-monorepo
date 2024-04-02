@@ -1,6 +1,7 @@
 @import "pollen.css";
 @import "./src/button/style.css";
 
+/*
 root {
   --color-bg: var(--color-base-100, white);
   --color-text: var(--color-base-content, black);
@@ -12,8 +13,9 @@ root {
     --color-text: var(--color-base-100, white);
   }
 }
+*/
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
 }

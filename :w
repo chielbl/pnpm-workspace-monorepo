@@ -169,7 +169,6 @@
   --grid-page: minmax(var(--grid-page-gutter), 1fr)
     minmax(0, var(--grid-page-width)) minmax(var(--grid-page-gutter), 1fr);
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
     --color-primary: #1b5154;
@@ -178,3 +177,4 @@
     --color-secondary-content: #d7f5f6;
   }
 }
+

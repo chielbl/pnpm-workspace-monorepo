@@ -6,7 +6,8 @@
     "build": "pnpm --parallel build",
     "dev": "pnpm --parallel dev",
     "lint": "pnpm --parallel lint",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gen:pollen": "cd packages/ui && pnpm gen:pollen"
   },
   "keywords": [],
   "author": "",
