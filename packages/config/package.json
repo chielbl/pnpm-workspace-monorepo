@@ -16,7 +16,7 @@
   ],
   "exports": {
     "./eslint/*": "./eslint/*.js",
-    "./typescript/*": "./typescript/*.json"
+    "./typescript": "./typescript/tsconfig.react.json"
   },
   "devDependencies": {
     "@babel/core": "^7.24.3",

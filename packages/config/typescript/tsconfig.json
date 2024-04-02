@@ -1,11 +1,10 @@
-// https://www.totaltypescript.com/tsconfig-cheat-sheet
 {
   "Display": "Base Configuration",
   "compilerOptions": {
-    // Basic Options
     "lib": ["es2022"],
     "target": "es2022",
     "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
     "skipLibCheck": true,
     "allowJs": true,
     "resolveJsonModule": true,
@@ -15,7 +14,6 @@
     "moduleDetection": "force",
     "sourceMap": true,
 
-    // Strictness
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,

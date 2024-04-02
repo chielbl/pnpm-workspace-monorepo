@@ -1,10 +1,10 @@
-import { ECMA_VERSION, JAVASCRIPT_FILES } from "./constants.js";
+// import { ECMA_VERSION, JAVASCRIPT_FILES } from "./constants.js";
 
 // This file contains the base ESLint configuration for all projects.
 module.exports = {
-  extends: ["eslint:recommended", "plugin:import/recommended", "prettier"],
+  extends: ["eslint:recommended", "plugin:import/recommended" /*, "prettier" */],
   env: {
-    [`es${ECMA_VERSION}`]: true,
+    [`es2021`]: true,
   },
   // Report unused `eslint-disable` comments.
   reportUnusedDisableDirectives: true,
@@ -17,12 +17,12 @@ module.exports = {
   },
   // Global parser options.
   parserOptions: {
-    ecmaVersion: ECMA_VERSION,
+    ecmaVersion: "2021",
     sourceType: "module",
   },
   overrides: [
     {
-      files: JAVASCRIPT_FILES,
+      files: ["*.js?(x)", "*.mjs"],
       parser: "@babel/eslint-parser",
       parserOptions: {
         requireConfigFile: false,
