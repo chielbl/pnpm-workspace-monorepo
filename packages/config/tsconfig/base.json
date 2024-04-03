@@ -4,8 +4,6 @@
     "lib": ["es2022"],
     "target": "es2022",
     "esModuleInterop": true,
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
     "skipLibCheck": true,
     "allowJs": true,
     "resolveJsonModule": true,

@@ -1,7 +1,7 @@
 import fastify from "fastify";
 
 const server = fastify({ logger: true });
-const PORT = 5000;
+var PORT = 5000;
 
 server.get("/", async () => {
   return { hello: "world" };
