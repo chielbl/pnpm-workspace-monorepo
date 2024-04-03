@@ -1,11 +1,3 @@
 {
-  //"extends": ["@repo/config/typescript/base.json","@repo/config/typescript/react.json"],
-
-  "compilerOptions": {
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "extends": ["@repo/config/tsconfig-react"]
 }

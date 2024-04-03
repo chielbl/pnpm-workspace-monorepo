@@ -4,9 +4,6 @@
 
   "compilerOptions": {
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "jsx": "react-jsx",
-    "module": "ESNext",
-    "noEmit": true
-  },
-  "include": ["src"]
+    "jsx": "react-jsx"
+  }
 }

@@ -4,21 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.ts",
-    "dev": "nodemon server.ts"
+    "build:server": "tsc server.ts",
+    "dev": "tsx --watch server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@repo/config": "workspace:^",
     "fastify": "^4.26.2",
     "fastify-swagger": "^5.2.0",
-    "nodemon": "^3.1.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.12.2",
     "ts-node": "^10.9.2",
+    "tsx": "^4.7.1",
     "typescript": "^5.4.3"
   }
 }
