@@ -12,7 +12,6 @@
     "moduleResolution": "NodeNext",
     "moduleDetection": "force",
     "sourceMap": true,
-    "outDir": "./dist",
 
     "strict": true,
     "noUnusedLocals": true,
