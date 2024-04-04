@@ -9,15 +9,16 @@ const itemRouter = (
   server.get("/items", getAllItemSchema, async (_, reply) => {
     const res = await fetch("https://dummyjson.com/products");
     const items = await res.json();
-    console.log("🚀 ~ items:", items);
+
     reply.send({ items });
   });
 
   server.get("/items/:id", getItemSchema, async (req, reply) => {
+    console.log("🚀 ~ server.get ~ req:", req.params);
     const { id } = req.params;
     const res = await fetch(`https://dummyjson.com/products/${id}`);
     const item = await res.json();
-    console.log("🚀 ~ item:", item);
+
     reply.send({ item });
   });
 
