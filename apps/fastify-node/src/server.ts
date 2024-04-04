@@ -1,10 +1,13 @@
 import fastify from "fastify";
+import itemsRouter from "./routes/items";
 
 const server = fastify({ logger: true });
-var PORT = 5000;
+var PORT = 8000;
 
-server.get("/", async () => {
-  return { hello: "world" };
+server.register(itemsRouter);
+
+server.get("/", async (_, reply) => {
+  reply.send({ hello: "server" });
 });
 
 server.listen({ port: PORT }, (err, address) => {
