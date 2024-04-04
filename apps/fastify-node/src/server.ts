@@ -1,10 +1,13 @@
 import fastify from "fastify";
-import itemsRouter from "./routes/items";
+import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
+import itemRouter from "./routes/item";
 
-const server = fastify({ logger: true });
+const server = fastify({
+  logger: true,
+}).withTypeProvider<TypeBoxTypeProvider>();
 var PORT = 8000;
 
-server.register(itemsRouter);
+server.register(itemRouter);
 
 server.get("/", async (_, reply) => {
   reply.send({ hello: "server" });
