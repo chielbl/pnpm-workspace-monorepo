@@ -1,7 +1,7 @@
-import { DMY_API } from "../../server";
+import { DMY_API } from "@/server";
 import { ItemParams } from "./schema";
 
-export const getItemsHandler = async (_, reply) => {
+export const getItemsHandler = async (_: any, reply: any) => {
   const res = await fetch(DMY_API);
   const items = await res.json();
 

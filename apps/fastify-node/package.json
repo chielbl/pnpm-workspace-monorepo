@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "tsx --watch src/server.ts"
+    "dev": "tsx --watch src/server.ts",
+    "lint": "eslint . --ext ts --report-unused-disable-directives --max-warnings 0"
   },
   "keywords": [],
   "author": "",

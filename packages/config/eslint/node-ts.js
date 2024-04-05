@@ -10,4 +10,8 @@ module.exports = {
     sourceType: "module",
     ecmaVersion: 2022,
   },
+  rules: {
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+  },
 };
