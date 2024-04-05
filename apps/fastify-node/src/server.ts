@@ -5,7 +5,8 @@ import itemsRouter from "./routes/items";
 const server = fastify({
   logger: true,
 }).withTypeProvider<TypeBoxTypeProvider>();
-var PORT = 8000;
+export const PORT = 8000;
+export const DMY_API = "https://dummyjson.com/products/";
 
 server.register(itemsRouter);
 
