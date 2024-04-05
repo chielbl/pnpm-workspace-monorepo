@@ -9,17 +9,17 @@ export const itemSchema = Type.Object({
 });
 export type Item = Static<typeof itemSchema>;
 
-// All items schema
-export const allItemResponseSchema = {
+// Items schema
+export const itemsResponseSchema = {
   200: {
     items: Type.Object({
       products: Type.Array(itemSchema),
     }),
   },
 };
-export const getAllItemSchema = {
+export const getItemsSchema = {
   schema: {
-    response: allItemResponseSchema,
+    response: itemsResponseSchema,
   },
 };
 
@@ -27,6 +27,7 @@ export const getAllItemSchema = {
 export const itemParamsSchema = Type.Object({
   id: Type.String(),
 });
+export type ItemParams = Static<typeof itemParamsSchema>;
 export const itemResponseSchema = {
   200: {
     item: itemSchema,

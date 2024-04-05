@@ -1,12 +1,12 @@
 import { DoneFuncWithErrOrRes, FastifyInstance } from "fastify";
-import { getAllItemSchema, getItemSchema } from "./schemas";
+import { ItemParams, getItemsSchema, getItemSchema } from "./schemas";
 
-const itemRouter = (
+const itemsRouter = (
   server: FastifyInstance,
   options: any,
   done: DoneFuncWithErrOrRes
 ) => {
-  server.get("/items", getAllItemSchema, async (_, reply) => {
+  server.get("/items", getItemsSchema, async (_, reply) => {
     const res = await fetch("https://dummyjson.com/products");
     const items = await res.json();
 
@@ -14,8 +14,7 @@ const itemRouter = (
   });
 
   server.get("/items/:id", getItemSchema, async (req, reply) => {
-    console.log("🚀 ~ server.get ~ req:", req.params);
-    const { id } = req.params;
+    const { id } = req.params as ItemParams; // QUESTION: Why do we need to cast req.params as ItemParams and doesn't get to right type from getItemSchema?
     const res = await fetch(`https://dummyjson.com/products/${id}`);
     const item = await res.json();
 
@@ -25,4 +24,4 @@ const itemRouter = (
   done();
 };
 
-export default itemRouter;
+export default itemsRouter;
