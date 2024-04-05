@@ -1,12 +1,12 @@
 import fastify from "fastify";
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
-import itemsRouter from "./routes/items";
+import { itemsRouter } from "./routes";
 
+export const PORT = 8000;
+export const DMY_API = "https://dummyjson.com/products/";
 const server = fastify({
   logger: true,
 }).withTypeProvider<TypeBoxTypeProvider>();
-export const PORT = 8000;
-export const DMY_API = "https://dummyjson.com/products/";
 
 server.register(itemsRouter);
 
