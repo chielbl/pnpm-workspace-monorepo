@@ -51,3 +51,13 @@ export const addItemSchema = {
   },
 };
 //
+
+// DELETE item schema
+export const deleteItemSchema = {
+  params: itemParamsSchema,
+  response: {
+    200: {
+      message: Type.String(),
+    },
+  },
+};

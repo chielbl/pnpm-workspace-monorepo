@@ -1,6 +1,16 @@
 import { DoneFuncWithErrOrRes, FastifyInstance } from "fastify";
-import { addItemSchema, getItemSchema, getItemsSchema } from "./schema";
-import { addItemHandler, getItemHandler, getItemsHandler } from "./handler";
+import {
+  addItemSchema,
+  deleteItemSchema,
+  getItemSchema,
+  getItemsSchema,
+} from "./schema";
+import {
+  addItemHandler,
+  deleteItemHandler,
+  getItemHandler,
+  getItemsHandler,
+} from "./handler";
 
 export const getItemsOptions = {
   schema: getItemsSchema,
@@ -17,6 +27,11 @@ export const addItemOptions = {
   handler: addItemHandler,
 };
 
+export const deleteItemsOptions = {
+  schema: deleteItemSchema,
+  handler: deleteItemHandler,
+};
+
 const itemsRouter = (
   server: FastifyInstance,
   options: any,
@@ -27,7 +42,10 @@ const itemsRouter = (
   server.get("/items/:id", getItemOptions);
 
   // ADD item(s)
-  server.post("/item", addItemOptions);
+  server.post("/items", addItemOptions);
+
+  // DELETE item
+  server.delete("/items/:id", deleteItemsOptions);
 
   done();
 };

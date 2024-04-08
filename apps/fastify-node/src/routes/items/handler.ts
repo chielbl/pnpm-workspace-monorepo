@@ -42,3 +42,17 @@ export const addItemHandler = async (
   const newItem: Item = await response.json();
   reply.code(201).send({ item: newItem });
 };
+//
+
+// DELETE item
+export const deleteItemHandler = async (
+  req: FastifyRequest<{ Params: ItemParams }>,
+  reply: FastifyReply
+) => {
+  const { id } = req.params;
+  await fetch(`${DMY_API}/${id}`, {
+    method: "DELETE",
+  });
+
+  reply.code(200).send({ message: `Item with ${id} has been deleted!` });
+};
