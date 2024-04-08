@@ -1,4 +1,6 @@
 import fastify from "fastify";
+import fastifySwagger from "@fastify/swagger";
+import fastifySwaggerUI from "@fastify/swagger-ui";
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 import { itemsRouter } from "./routes";
 
@@ -8,6 +10,10 @@ const server = fastify({
   logger: true,
 }).withTypeProvider<TypeBoxTypeProvider>();
 
+server.register(fastifySwagger);
+server.register(fastifySwaggerUI, {
+  routePrefix: "/docs",
+});
 server.register(itemsRouter);
 
 server.get("/", async (_, reply) => {

@@ -12,11 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fastify/swagger": "^8.14.0",
+    "@fastify/swagger-ui": "^3.0.0",
     "@fastify/type-provider-typebox": "^4.0.0",
     "@repo/config": "workspace:^",
     "@sinclair/typebox": "^0.32.20",
     "fastify": "^4.26.2",
-    "fastify-swagger": "^5.2.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
