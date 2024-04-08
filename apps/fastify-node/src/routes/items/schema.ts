@@ -1,42 +1,53 @@
 import { Static, Type } from "@sinclair/typebox";
 
-// Item schema
+// ### GET item(s) schema
 export const itemSchema = Type.Object({
   id: Type.Number(),
   title: Type.String(),
   price: Type.Number(),
   description: Type.String(),
 });
-// Type
 export type Item = Static<typeof itemSchema>;
 
-// Items schema
-export const itemsResponseSchema = {
-  200: {
-    items: Type.Object({
-      products: Type.Array(itemSchema),
-    }),
+export const itemParamsSchema = Type.Object({
+  id: Type.String(),
+});
+export type ItemParams = Static<typeof itemParamsSchema>;
+
+export const getItemSchema = {
+  params: itemParamsSchema,
+  response: {
+    200: {
+      item: itemSchema,
+    },
   },
 };
 
 export const getItemsSchema = {
-  response: itemsResponseSchema,
-};
-
-// One item schema
-export const itemParamsSchema = Type.Object({
-  id: Type.String(),
-});
-// Type
-export type ItemParams = Static<typeof itemParamsSchema>;
-
-export const itemResponseSchema = {
-  200: {
-    item: itemSchema,
+  response: {
+    200: {
+      items: {
+        products: Type.Array(itemSchema),
+      },
+    },
   },
 };
+//
 
-export const getItemSchema = {
-  params: itemParamsSchema,
-  response: itemResponseSchema,
+// ### ADD item schema
+export const itemBodySchema = Type.Object({
+  title: Type.String(),
+  price: Type.Number(),
+  description: Type.String(),
+});
+export type ItemBody = Static<typeof itemBodySchema>;
+
+export const addItemSchema = {
+  body: itemBodySchema,
+  response: {
+    201: {
+      item: itemSchema,
+    },
+  },
 };
+//
