@@ -18,9 +18,7 @@ const itemsRouter = (
   done: DoneFuncWithErrOrRes
 ) => {
   server.get("/items", getItemsOptions);
-
   server.get("/items/:id", getItemOptions);
-
   done();
 };
 

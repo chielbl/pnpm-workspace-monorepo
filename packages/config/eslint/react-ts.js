@@ -3,7 +3,13 @@ module.exports = {
   env: {
     browser: true,
   },
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  ignorePatterns: [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/coverage/**",
+    ".eslintrc.cjs",
+  ],
   plugins: ["react-refresh"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
