@@ -4,32 +4,39 @@ import {
   deleteItemSchema,
   getItemSchema,
   getItemsSchema,
+  updateItemSchema,
 } from "./schema";
 import {
   addItemHandler,
   deleteItemHandler,
   getItemHandler,
   getItemsHandler,
+  updateItemHandler,
 } from "./handler";
 
-export const getItemsOptions = {
+const getItemsOptions = {
   schema: getItemsSchema,
   handler: getItemsHandler,
 };
 
-export const getItemOptions = {
+const getItemOptions = {
   schema: getItemSchema,
   handler: getItemHandler,
 };
 
-export const addItemOptions = {
+const addItemOptions = {
   schema: addItemSchema,
   handler: addItemHandler,
 };
 
-export const deleteItemsOptions = {
+const deleteItemsOptions = {
   schema: deleteItemSchema,
   handler: deleteItemHandler,
+};
+
+const updateItemOptions = {
+  schema: updateItemSchema,
+  handler: updateItemHandler,
 };
 
 const itemsRouter = (
@@ -46,6 +53,9 @@ const itemsRouter = (
 
   // DELETE item
   server.delete("/items/:id", deleteItemsOptions);
+
+  // UPDATE item
+  server.put("/items/:id", updateItemOptions);
 
   done();
 };

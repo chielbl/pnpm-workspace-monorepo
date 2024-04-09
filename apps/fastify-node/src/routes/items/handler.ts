@@ -56,3 +56,23 @@ export const deleteItemHandler = async (
 
   reply.code(200).send({ message: `Item with ${id} has been deleted!` });
 };
+
+// UPDATE item
+export const updateItemHandler = async (
+  req: FastifyRequest<{ Params: ItemParams; Body: ItemBody }>,
+  reply: FastifyReply
+) => {
+  const { params, body } = req;
+  const { id } = params;
+  const item = await (await fetch(`${DMY_API}${id}`)).json();
+  const updatedItem = { ...item, ...body };
+
+  await fetch(`${DMY_API}/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updatedItem),
+  });
+
+  reply.code(200).send({ message: `Item with ${id} has been updated!` });
+};
+//

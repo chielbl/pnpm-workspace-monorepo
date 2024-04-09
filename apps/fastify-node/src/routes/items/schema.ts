@@ -52,7 +52,7 @@ export const addItemSchema = {
 };
 //
 
-// DELETE item schema
+// ### DELETE item schema
 export const deleteItemSchema = {
   params: itemParamsSchema,
   response: {
@@ -61,3 +61,15 @@ export const deleteItemSchema = {
     },
   },
 };
+
+// ### UPDATE item schema
+export const updateItemSchema = {
+  params: itemParamsSchema,
+  body: itemBodySchema,
+  response: {
+    200: {
+      message: Type.String(),
+    },
+  },
+};
+//
