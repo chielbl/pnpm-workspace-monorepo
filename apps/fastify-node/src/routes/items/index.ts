@@ -11,8 +11,8 @@ const routes: FastifyPluginAsync = async (server) => {
   server.get("/", { schema: getItemsSchema }, getItemsHandler);
   server.get("/:id", { schema: getItemSchema }, getItemHandler);
   server.post("/", { schema: addItemSchema }, addItemHandler);
-  server.delete("/:id", { schema: deleteItemSchema }, deleteItemHandler);
   server.put("/:id", { schema: updateItemSchema }, updateItemHandler);
+  server.delete("/:id", { schema: deleteItemSchema }, deleteItemHandler);
 };
 
 export default routes;

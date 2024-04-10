@@ -27,7 +27,7 @@ export const getItemsHandler = async (_: FastifyRequest, reply: FastifyReply) =>
     id: item.id,
     title: item.title,
     price: item.price,
-    description: item2.description,
+    description: item.description,
   }));
 
   reply.send({ total: items.length, items });
