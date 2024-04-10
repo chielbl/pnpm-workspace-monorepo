@@ -12,7 +12,7 @@ export type ServerOptions = {
 
 export const createFastifyServer = async (opts: ServerOptions = {}): Promise<FastifyInstance> => {
   const server: any = fastify({
-    logger: log.child({ name: "server" }),
+    logger: log.child({ name: "fastify" }),
     disableRequestLogging: !env.LOG_REQUEST,
   }).withTypeProvider<TypeBoxTypeProvider>();
 

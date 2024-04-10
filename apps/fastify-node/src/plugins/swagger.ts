@@ -13,7 +13,7 @@ export default fp<FastifySwaggerOptions>(async (fastify) => {
     routePrefix: "/docs",
   });
 
-  // register domain schema's
+  // register DTO schema's
   fastify.addSchema(itemSchema);
 
   // register error schema's

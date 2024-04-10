@@ -4,9 +4,6 @@ import log from "./logManager";
 import { env } from "./env";
 // import { itemsRouter } from "./routes.legacy";
 
-export const PORT = 8000;
-export const DMY_API = "https://dummyjson.com/products/";
-
 async function startup() {
   // Create Fastify server
   const server = await createFastifyServer();
@@ -32,7 +29,7 @@ async function startup() {
     // close DB connection
     // dbConn.close();
   };
-  process.on("SIGTERM", shutdown);
+  process.on("SIGTERM", shutdown); // ctrl-c
   process.on("SIGINT", shutdown);
   process.on("SIGQUIT", shutdown);
 }
