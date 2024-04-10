@@ -2,6 +2,7 @@ import "dotenv/config";
 import { createFastifyServer } from "./fastify";
 import log from "./logManager";
 import { env } from "./env";
+// import { itemsRouter } from "./routes.legacy";
 
 export const PORT = 8000;
 export const DMY_API = "https://dummyjson.com/products/";
@@ -9,6 +10,8 @@ export const DMY_API = "https://dummyjson.com/products/";
 async function startup() {
   // Create Fastify server
   const server = await createFastifyServer();
+
+  // server.register(itemsRouter);
 
   // alive route
   server.get("/", async (_, reply) => {
