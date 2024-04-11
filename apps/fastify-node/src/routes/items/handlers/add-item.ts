@@ -34,5 +34,6 @@ export const addItemHandler = async (
     }),
   });
   const newItem: Item = await response.json();
+
   reply.code(201).send(newItem);
 };

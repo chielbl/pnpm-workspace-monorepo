@@ -28,10 +28,12 @@ export const getItemHandler = async (
   log.debug(`GET: ${req.params.id}`);
 
   const { id } = req.params; // QUESTION: Why do we need to cast req.params as ItemParams and doesn't get to right type from getItemSchema?
-  const res = await fetch(`${env.DMY_API}${id}`);
-  const item = await res.json();
+  const item = await (await fetch(`${env.DMY_API}${id}`)).json();
+  const itemExist = Boolean(item);
 
-  if (!item) reply.code(404).send({ message: `Item with ${id} not found!` });
+  if (!itemExist) {
+    reply.code(404).send({ message: `Item with ${id} not found!` });
+  }
 
   reply.send(item);
 };
