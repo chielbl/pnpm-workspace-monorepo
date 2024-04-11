@@ -27,7 +27,6 @@ export const createFastifyServer = async (
     dir: path.join(__dirname, "routes"),
     options: opts,
   });
-  console.log("🚀 ~", path.join(__dirname, "routes"));
 
   return fastify;
 };
