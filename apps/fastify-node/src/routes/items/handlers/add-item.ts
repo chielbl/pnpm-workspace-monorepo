@@ -14,9 +14,8 @@ export const addItemSchema = {
   tags: ["Items"],
   body: itemBodySchema,
   response: {
-    201: {
-      item: itemSchema,
-    },
+    201: { $ref: `${itemSchema.$id}#` },
+    "5xx": { $ref: `InternalServerError#` },
   },
 };
 
@@ -35,5 +34,5 @@ export const addItemHandler = async (
     }),
   });
   const newItem: Item = await response.json();
-  reply.code(201).send({ item: newItem });
+  reply.code(201).send(newItem);
 };
