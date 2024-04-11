@@ -1,63 +1,27 @@
-import { DoneFuncWithErrOrRes, FastifyInstance } from "fastify";
-import {
-  addItemSchema,
-  deleteItemSchema,
-  getItemSchema,
-  getItemsSchema,
-  updateItemSchema,
-} from "./schema";
+import { FastifyPluginAsync } from "fastify";
+import { itemSchema } from "./schema";
 import {
   addItemHandler,
+  addItemSchema,
   deleteItemHandler,
+  deleteItemSchema,
   getItemHandler,
+  getItemSchema,
   getItemsHandler,
+  getItemsSchema,
   updateItemHandler,
-} from "./handler";
+  updateItemSchema,
+} from "./handlers";
 
-const getItemsOptions = {
-  schema: getItemsSchema,
-  handler: getItemsHandler,
+const routes: FastifyPluginAsync = async (server) => {
+  // server.addHook("onRequest", (req) => req.jwtVerify());
+  server.get("/", { schema: getItemsSchema }, getItemsHandler);
+  server.get("/:id", { schema: getItemSchema }, getItemHandler);
+  server.post("/", { schema: addItemSchema }, addItemHandler);
+  server.put("/:id", { schema: updateItemSchema }, updateItemHandler);
+  server.delete("/:id", { schema: deleteItemSchema }, deleteItemHandler);
 };
 
-const getItemOptions = {
-  schema: getItemSchema,
-  handler: getItemHandler,
-};
-
-const addItemOptions = {
-  schema: addItemSchema,
-  handler: addItemHandler,
-};
-
-const deleteItemsOptions = {
-  schema: deleteItemSchema,
-  handler: deleteItemHandler,
-};
-
-const updateItemOptions = {
-  schema: updateItemSchema,
-  handler: updateItemHandler,
-};
-
-const itemsRouter = (
-  server: FastifyInstance,
-  options: any,
-  done: DoneFuncWithErrOrRes
-) => {
-  // GET item(s)
-  server.get("/items", getItemsOptions);
-  server.get("/items/:id", getItemOptions);
-
-  // ADD item(s)
-  server.post("/items", addItemOptions);
-
-  // DELETE item
-  server.delete("/items/:id", deleteItemsOptions);
-
-  // UPDATE item
-  server.put("/items/:id", updateItemOptions);
-
-  done();
-};
-
-export default itemsRouter;
+export default routes;
+export { itemSchema };
+export const autoPrefix = "/api/items";
