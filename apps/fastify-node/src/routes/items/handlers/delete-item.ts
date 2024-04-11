@@ -18,6 +18,7 @@ export const deleteItemSchema = {
       message: Type.String(),
     },
     404: { $ref: "NotFound#" },
+    "5xx": { $ref: `InternalServerError#` },
   },
 };
 

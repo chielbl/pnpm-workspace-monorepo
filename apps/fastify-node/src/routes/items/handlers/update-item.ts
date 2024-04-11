@@ -1,6 +1,9 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { Static, Type } from "@sinclair/typebox";
 import { env } from "@/env";
+import { getLogger } from "@/log-manager";
+
+const log = getLogger("item");
 
 const itemParamsSchema = Type.Object({
   id: Type.String(),
@@ -22,6 +25,8 @@ export const updateItemSchema = {
     200: {
       message: Type.String(),
     },
+    404: { $ref: "NotFound#" },
+    "5xx": { $ref: `InternalServerError#` },
   },
 };
 
@@ -29,9 +34,17 @@ export const updateItemHandler = async (
   req: FastifyRequest<{ Params: ItemParams; Body: ItemBody }>,
   reply: FastifyReply
 ) => {
+  log.debug(`PUT: ${req.params.id}`);
+
   const { params, body } = req;
   const { id } = params;
   const item = await (await fetch(`${env.DMY_API}${id}`)).json();
+  const itemExist = Boolean(item);
+
+  if (!itemExist) {
+    reply.code(404).send({ message: `Item with ${id} not found!` });
+  }
+
   const updatedItem = { ...item, ...body };
 
   await fetch(`${env.DMY_API}/${id}`, {
