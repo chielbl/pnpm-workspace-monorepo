@@ -7,7 +7,19 @@ import { itemSchema } from "@/routes/items/schema";
  * This plugins adds swagger support
  */
 export default fp<FastifySwaggerOptions>(async (fastify) => {
-  fastify.register(fastifySwagger);
+  fastify.register(fastifySwagger, {
+    swagger: {
+      info: {
+        title: "Fastify Node API",
+        description: "API documentation for Fastify Node API",
+        version: "0.1.0",
+      },
+      externalDocs: {
+        description: "Here can you find more information dummy json API",
+        url: "https://dummyjson.com/docs/products",
+      },
+    },
+  });
   fastify.register(fastifySwaggerUI, {
     routePrefix: "/docs",
   });
