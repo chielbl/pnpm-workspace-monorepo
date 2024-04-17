@@ -8,7 +8,7 @@ import {
 } from "drizzle-orm/pg-core";
 
 export const productsTable = pgTable("products", {
-  id: uuid("id").primaryKey(),
+  id: uuid("id").primaryKey().defaultRandom(),
   title: text("title").notNull(),
   description: varchar("description", { length: 256 }).notNull(),
   shortDescription: varchar("shortDescription", { length: 128 }),
@@ -22,3 +22,5 @@ export const productsTable = pgTable("products", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().notNull(),
 });
+
+export type Product = typeof productsTable.$inferInsert;
