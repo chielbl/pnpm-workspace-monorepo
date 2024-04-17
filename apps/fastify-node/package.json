@@ -33,7 +33,8 @@
     "fastify-plugin": "^4.5.1",
     "pg": "^8.11.5",
     "pino": "^8.20.0",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/fastify-cors": "^2.1.0",
