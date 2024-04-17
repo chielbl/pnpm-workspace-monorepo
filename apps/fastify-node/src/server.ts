@@ -3,7 +3,6 @@ import { FastifyReply } from "fastify";
 import log from "./log-manager";
 import { env } from "./env";
 import { createFastifyServer } from "./fastify";
-// import { itemsRouter } from "./routes.legacy";
 
 async function startup() {
   // Create Fastify server
