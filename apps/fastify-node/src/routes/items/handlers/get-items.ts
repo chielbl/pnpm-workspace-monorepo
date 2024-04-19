@@ -1,5 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { itemSchema } from "../schema";
+import { db } from "@/db";
+import { productsTable } from "@/db/schemas";
 
 export const getItemsSchema = {
   tags: ["Items"],
@@ -21,16 +23,6 @@ export const getItemsHandler = async (
   _: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const res = await fetch(process.env.DMY_API);
-  const result = await res.json();
-
-  // we need to return a subset of the entity to match the schema
-  const items = result.products.map((item: any) => ({
-    id: item.id,
-    title: item.title,
-    price: item.price,
-    description: item.description,
-  }));
-
+  const items = await db.select().from(productsTable);
   reply.send({ total: items.length, items });
 };
