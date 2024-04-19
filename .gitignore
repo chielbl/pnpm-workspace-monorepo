@@ -29,3 +29,6 @@ migrations/*
 *.sln
 *.swp
 *.sw?
+
+# REST files
+*.http

@@ -1,6 +1,9 @@
+import { eq } from "drizzle-orm";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { Static, Type } from "@sinclair/typebox";
 import { getLogger } from "@/log-manager";
+import { db } from "@/db";
+import { products } from "@/db/schemas";
 
 const log = getLogger("item");
 
@@ -28,17 +31,14 @@ export const deleteItemHandler = async (
   log.debug(`DELETE: ${req.params.id}`);
 
   const { id } = req.params;
-  const itemExist = Boolean(
-    await (await fetch(`${process.env.DMY_API}/${id}`)).json()
-  );
+  const [item] = await db.select().from(products).where(eq(products.id, id));
+  const itemExist = Boolean(item);
 
   if (!itemExist) {
     reply.code(404).send({ message: `Item with ${id} not found!` });
   }
 
-  await fetch(`${process.env.DMY_API}/${id}`, {
-    method: "DELETE",
-  });
+  await db.delete(products).where(eq(products.id, id)).returning();
 
   reply.code(200).send({ message: `Item with ${id} has been deleted!` });
 };
