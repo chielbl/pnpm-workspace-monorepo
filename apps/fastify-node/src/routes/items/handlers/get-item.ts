@@ -1,13 +1,15 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { Static, Type } from "@sinclair/typebox";
-import { env } from "@/env";
+import { eq } from "drizzle-orm";
 import { itemSchema } from "../schema";
 import { getLogger } from "@/log-manager";
+import { db } from "@/db";
+import { products } from "@/db/schemas";
 
 const log = getLogger("item");
 
 export const itemParamsSchema = Type.Object({
-  id: Type.Number(),
+  id: Type.String(),
 });
 export type ItemParams = Static<typeof itemParamsSchema>;
 
@@ -28,7 +30,7 @@ export const getItemHandler = async (
   log.debug(`GET: ${req.params.id}`);
 
   const { id } = req.params; // QUESTION: Why do we need to cast req.params as ItemParams and doesn't get to right type from getItemSchema?
-  const item = await (await fetch(`${env.DMY_API}${id}`)).json();
+  const [item] = await db.select().from(products).where(eq(products.id, id));
   const itemExist = Boolean(item);
 
   if (!itemExist) {
