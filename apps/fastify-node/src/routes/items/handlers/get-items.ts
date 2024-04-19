@@ -1,7 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { itemSchema } from "../schema";
-import { db } from "@/db";
-import { products } from "@/db/schemas";
+import { db, products } from "@/db";
 
 export const getItemsSchema = {
   tags: ["Items"],

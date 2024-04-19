@@ -1,8 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { Static, Type } from "@sinclair/typebox";
 import { itemSchema } from "../schema";
-import { db } from "@/db";
-import { ProductDBM, products } from "@/db/schemas";
+import { db, products } from "@/db";
 
 const itemBodySchema = Type.Object({
   title: Type.String(),
@@ -31,10 +30,7 @@ export const addItemHandler = async (
   req: FastifyRequest<{ Body: ItemBody }>,
   reply: FastifyReply
 ) => {
-  const [newItem]: ProductDBM[] = await db
-    .insert(products)
-    .values(req.body)
-    .returning();
+  const [newItem] = await db.insert(products).values(req.body).returning();
 
   reply.code(201).send(newItem);
 };

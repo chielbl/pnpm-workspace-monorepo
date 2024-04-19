@@ -1,10 +1,8 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { Static, Type } from "@sinclair/typebox";
-import { eq } from "drizzle-orm";
 import { itemSchema } from "../schema";
 import { getLogger } from "@/log-manager";
-import { db } from "@/db";
-import { products } from "@/db/schemas";
+import { db, products, eq } from "@/db";
 
 const log = getLogger("item");
 
