@@ -1,11 +1,20 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { Static, Type } from "@sinclair/typebox";
-import { type ItemDTO, itemSchema } from "../schema";
+import { itemSchema } from "../schema";
+import { db } from "@/db";
+import { ProductDBM, products } from "@/db/schemas";
 
 const itemBodySchema = Type.Object({
   title: Type.String(),
-  price: Type.Number(),
   description: Type.String(),
+  shortDescription: Type.Optional(Type.String()),
+  price: Type.Number(),
+  discountPercentage: Type.Optional(Type.Number()),
+  rating: Type.Optional(Type.Number()),
+  stock: Type.Number(),
+  category: Type.String(),
+  thumbnail: Type.String(),
+  images: Type.Array(Type.String()),
 });
 type ItemBody = Static<typeof itemBodySchema>;
 
@@ -22,17 +31,10 @@ export const addItemHandler = async (
   req: FastifyRequest<{ Body: ItemBody }>,
   reply: FastifyReply
 ) => {
-  const { title, price, description } = req.body;
-  const response = await fetch(`${process.env.DMY_API}/add`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      title,
-      price,
-      description,
-    }),
-  });
-  const newItem: ItemDTO = await response.json();
+  const [newItem]: ProductDBM[] = await db
+    .insert(products)
+    .values(req.body)
+    .returning();
 
   reply.code(201).send(newItem);
 };
