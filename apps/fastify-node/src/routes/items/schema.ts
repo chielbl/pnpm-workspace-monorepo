@@ -18,4 +18,6 @@ export const itemSchema = Type.Object(
   },
   { $id: "Item" }
 );
-export type Item = Static<typeof itemSchema>;
+
+// DTO stands for Data Transfer Object
+export type ItemDTO = Static<typeof itemSchema>;

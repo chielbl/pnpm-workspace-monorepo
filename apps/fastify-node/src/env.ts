@@ -7,7 +7,7 @@ import { z } from "zod";
 // };
 const serverEnvSchema = {
   DATABASE_URL: z.string().url(),
-  DMY_API: z.string().url(),
+  DATABASE_SEED_URL: z.string().url(),
   // .transform((url) => url || "https://dummyjson.com/products"),
   PORT: z.string().optional(),
   // .transform((port) => parseInt(port || "8000", 10)),
@@ -36,7 +36,7 @@ export const env = createEnv({
 declare global {
   namespace NodeJS {
     interface ProcessEnv extends Env {
-      [key: string]: string | undefined;
+      // [key: string]: string | undefined;
       // add more environment variables and their types here
     }
   }

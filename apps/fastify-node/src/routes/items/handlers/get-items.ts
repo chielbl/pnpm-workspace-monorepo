@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { itemSchema } from "../schema";
 import { db } from "@/db";
-import { productsTable } from "@/db/schemas";
+import { products } from "@/db/schemas";
 
 export const getItemsSchema = {
   tags: ["Items"],
@@ -23,6 +23,6 @@ export const getItemsHandler = async (
   _: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const items = await db.select().from(productsTable);
+  const items = await db.select().from(products);
   reply.send({ total: items.length, items });
 };

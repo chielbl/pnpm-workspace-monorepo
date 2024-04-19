@@ -7,7 +7,7 @@ import {
   timestamp,
 } from "drizzle-orm/pg-core";
 
-export const productsTable = pgTable("products", {
+export const products = pgTable("products", {
   id: uuid("id").primaryKey().defaultRandom(),
   title: text("title").notNull(),
   description: varchar("description", { length: 256 }).notNull(),
@@ -23,4 +23,5 @@ export const productsTable = pgTable("products", {
   updatedAt: timestamp("updatedAt").defaultNow().notNull(),
 });
 
-export type Product = typeof productsTable.$inferInsert;
+// DBM stands for Database Model
+export type ProductDBM = typeof products.$inferInsert;

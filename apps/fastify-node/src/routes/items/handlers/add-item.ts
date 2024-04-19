@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { Static, Type } from "@sinclair/typebox";
-import { type Item, itemSchema } from "../schema";
+import { type ItemDTO, itemSchema } from "../schema";
 
 const itemBodySchema = Type.Object({
   title: Type.String(),
@@ -32,7 +32,7 @@ export const addItemHandler = async (
       description,
     }),
   });
-  const newItem: Item = await response.json();
+  const newItem: ItemDTO = await response.json();
 
   reply.code(201).send(newItem);
 };
