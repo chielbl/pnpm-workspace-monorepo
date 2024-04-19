@@ -1,6 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { Static, Type } from "@sinclair/typebox";
-import { env } from "@/env";
 import { getLogger } from "@/log-manager";
 
 const log = getLogger("item");
@@ -29,13 +28,15 @@ export const deleteItemHandler = async (
   log.debug(`DELETE: ${req.params.id}`);
 
   const { id } = req.params;
-  const itemExist = Boolean(await (await fetch(`${env.DMY_API}/${id}`)).json());
+  const itemExist = Boolean(
+    await (await fetch(`${process.env.DMY_API}/${id}`)).json()
+  );
 
   if (!itemExist) {
     reply.code(404).send({ message: `Item with ${id} not found!` });
   }
 
-  await fetch(`${env.DMY_API}/${id}`, {
+  await fetch(`${process.env.DMY_API}/${id}`, {
     method: "DELETE",
   });
 

@@ -1,6 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { Static, Type } from "@sinclair/typebox";
-import { env } from "@/env";
 import { type Item, itemSchema } from "../schema";
 
 const itemBodySchema = Type.Object({
@@ -24,7 +23,7 @@ export const addItemHandler = async (
   reply: FastifyReply
 ) => {
   const { title, price, description } = req.body;
-  const response = await fetch(`${env.DMY_API}/add`, {
+  const response = await fetch(`${process.env.DMY_API}/add`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

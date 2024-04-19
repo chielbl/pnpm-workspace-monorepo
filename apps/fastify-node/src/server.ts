@@ -1,7 +1,5 @@
-import "dotenv/config";
 import { FastifyReply } from "fastify";
 import log from "./log-manager";
-import { env } from "./env";
 import { createFastifyServer } from "./fastify";
 
 async function startup() {
@@ -19,7 +17,7 @@ async function startup() {
   // const dbConn = await openDB();
 
   // Listen for http requests
-  await server.listen({ port: env.PORT, host: env.HOST });
+  server.listen({ port: Number(process.env.PORT), host: process.env.HOST });
 
   // Handle graceful shutdown
   const shutdown = async () => {

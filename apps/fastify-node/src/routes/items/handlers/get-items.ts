@@ -1,5 +1,4 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { env } from "@/env";
 import { itemSchema } from "../schema";
 
 export const getItemsSchema = {
@@ -22,7 +21,7 @@ export const getItemsHandler = async (
   _: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const res = await fetch(env.DMY_API);
+  const res = await fetch(process.env.DMY_API);
   const result = await res.json();
 
   // we need to return a subset of the entity to match the schema

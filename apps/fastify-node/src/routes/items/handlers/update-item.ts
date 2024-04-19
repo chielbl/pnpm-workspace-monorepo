@@ -1,6 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { Static, Type } from "@sinclair/typebox";
-import { env } from "@/env";
 import { getLogger } from "@/log-manager";
 
 const log = getLogger("item");
@@ -38,7 +37,7 @@ export const updateItemHandler = async (
 
   const { params, body } = req;
   const { id } = params;
-  const item = await (await fetch(`${env.DMY_API}${id}`)).json();
+  const item = await (await fetch(`${process.env.DMY_API}${id}`)).json();
   const itemExist = Boolean(item);
 
   if (!itemExist) {
@@ -47,7 +46,7 @@ export const updateItemHandler = async (
 
   const updatedItem = { ...item, ...body };
 
-  await fetch(`${env.DMY_API}/${id}`, {
+  await fetch(`${process.env.DMY_API}/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(updatedItem),

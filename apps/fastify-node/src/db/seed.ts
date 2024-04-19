@@ -2,12 +2,11 @@ import { productsTable } from "./schemas/products";
 import { type Product } from "./schemas";
 import log from "@/log-manager";
 import { db } from ".";
-import { env } from "@/env";
 
 const main = async () => {
   log.info("Running seed...");
   // Seed data here
-  const res = await fetch(`${env.DMY_API}?limit=10`);
+  const res = await fetch(`${process.env.DMY_API}?limit=10`);
   const { products } = (await res.json()) as { products: Product[] };
   const mappedProducts = products.map(
     // eslint-disable-next-line no-param-reassign

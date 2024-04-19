@@ -3,7 +3,6 @@ import fastifyAutoload, { AutoloadPluginOptions } from "@fastify/autoload";
 import f, { FastifyInstance } from "fastify";
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 import log from "@/log-manager";
-import { env } from "@/env";
 
 export type ServerOptions = {
   // Place your custom options for app below here.
@@ -14,7 +13,7 @@ export const createFastifyServer = async (
 ): Promise<FastifyInstance> => {
   const fastify: any = f({
     logger: log.child({ name: "fastify" }),
-    disableRequestLogging: !env.LOG_REQUEST,
+    disableRequestLogging: Boolean(process.env.LOG_REQUEST),
   }).withTypeProvider<TypeBoxTypeProvider>();
 
   fastify.register(fastifyAutoload, {
