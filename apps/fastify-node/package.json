@@ -9,7 +9,7 @@
     "lint": "eslint . --ext ts --report-unused-disable-directives --max-warnings 0",
     "db:introspect": "drizzle-kit introspect:pg --config=./src/db/drizzle.config.ts",
     "db:generate": "drizzle-kit generate:pg --config=./src/db/drizzle.config.ts",
-    "db:migrate": "tsx ./src/db/migrate.ts",
+    "db:migrate": "tsx -r dotenv/config ./src/db/migrate.ts",
     "db:seed": "tsx -r dotenv/config ./src/db/seed.ts",
     "db:drop": "drizzle-kit drop --config=./src/db/drizzle.config.ts",
     "db:studio": "drizzle-kit studio --verbose --config=./src/db/drizzle.config.ts"

@@ -21,6 +21,7 @@ const serverEnvSchema = {
   // .transform((v) => v === "true"),
   LOG_PRETTY: z.string().optional(),
   // .transform((v) => v === "true"),
+  LOG_DRIZZLE: z.string().optional(),
 };
 
 // const envSchema = z.object({...clientEnvSchema,...serverEnvSchema});
