@@ -14,3 +14,5 @@ export const usersTable = pgTable(
     uniqueIdx: uniqueIndex("unique_idx").on(users.email),
   }),
 );
+
+export type User = typeof usersTable.$inferInsert;
