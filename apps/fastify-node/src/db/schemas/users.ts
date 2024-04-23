@@ -1,3 +1,4 @@
+import { relations } from "drizzle-orm";
 import {
   boolean,
   integer,
@@ -9,6 +10,7 @@ import {
   uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
+import { postsTable } from "./posts";
 
 export const userRole = pgEnum("userRole", ["ADMIN", "USER"]);
 export const usersTable = pgTable(
@@ -36,3 +38,19 @@ export const userPreferencesTable = pgTable("userPreferences", {
     .notNull()
     .references(() => usersTable.id),
 });
+
+// RELATIONS
+export const userTableRelations = relations(usersTable, ({ one, many }) => ({
+  preference: one(userPreferencesTable),
+  posts: many(postsTable),
+}));
+
+export const userPreferencesTableRelations = relations(
+  userPreferencesTable,
+  ({ one }) => ({
+    user: one(usersTable, {
+      fields: [userPreferencesTable.userId],
+      references: [usersTable.id],
+    }),
+  })
+);
