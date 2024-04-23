@@ -23,7 +23,7 @@ const main = async () => {
       // vercel requires the POSTGRES_URL environment to be set
       process.env.POSTGRES_URL = env.DATABASE_URL;
       const db = drizzleVercel(sql);
-      await vercelMigrate(db as VercelPgDatabase<Record<string, never>>, {
+      await vercelMigrate(db, {
         migrationsFolder: path.join(__dirname, "./migrations"),
       });
     } else if (env.DATABASE_PROVIDER === "pg") {
@@ -37,7 +37,7 @@ const main = async () => {
       });
       try {
         const db = drizzleLocal(connection);
-        await postgresMigrator(db as PostgresJsDatabase<Record<string, never>>, {
+        await postgresMigrator(db, {
           migrationsFolder: path.join(__dirname, "./migrations"),
         });
       } catch (err) {
