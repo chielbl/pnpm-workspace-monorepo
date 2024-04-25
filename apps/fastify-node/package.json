@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "tsx --watch -r dotenv/config src/server.ts",
+    "dev": "tsx --watch src/server.ts",
     "lint": "eslint . --ext ts --report-unused-disable-directives --max-warnings 0",
     "db:introspect": "drizzle-kit introspect:pg --config=./src/db/drizzle.config.ts",
     "db:generate": "drizzle-kit generate:pg --config=./src/db/drizzle.config.ts",
-    "db:migrate": "tsx -r dotenv/config ./src/db/migrate.ts",
-    "db:seed": "tsx -r dotenv/config ./src/db/seed.ts",
+    "db:migrate": "tsx ./src/db/migrate.ts",
+    "db:seed": "tsx ./src/db/seed.ts",
     "db:drop": "drizzle-kit drop --config=./src/db/drizzle.config.ts",
     "db:studio": "drizzle-kit studio --verbose --config=./src/db/drizzle.config.ts"
   },
@@ -33,6 +33,7 @@
     "fastify-plugin": "^4.5.1",
     "pg": "^8.11.5",
     "pino": "^8.20.0",
+    "postgres": "^3.4.4",
     "uuid": "^9.0.1",
     "zod": "^3.22.4"
   },
