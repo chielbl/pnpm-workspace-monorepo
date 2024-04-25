@@ -12,7 +12,9 @@
     "db:migrate": "tsx ./src/db/migrate.ts",
     "db:seed": "tsx ./src/db/seed.ts",
     "db:drop": "drizzle-kit drop --config=./src/db/drizzle.config.ts",
-    "db:studio": "drizzle-kit studio --verbose --config=./src/db/drizzle.config.ts"
+    "db:studio": "drizzle-kit studio --verbose --config=./src/db/drizzle.config.ts",
+    "db:up": "docker-compose up -d",
+    "db:down": "docker-compose down"
   },
   "keywords": [],
   "author": "",
