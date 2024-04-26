@@ -2,9 +2,8 @@ import fp from "fastify-plugin";
 import helmet, { FastifyHelmetOptions } from "@fastify/helmet";
 
 /**
- * Bron: https://helmetjs.github.io/#content-security-policy
+ * Resource: https://helmetjs.github.io/#content-security-policy
  */
-
 const contentSecurityPolicy: FastifyHelmetOptions["contentSecurityPolicy"] = {
   useDefaults: false,
   directives: {
@@ -25,11 +24,22 @@ const contentSecurityPolicy: FastifyHelmetOptions["contentSecurityPolicy"] = {
 };
 
 /**
+ * Resource: https://helmetjs.github.io/#strict-transport-security
+ */
+const strictTransportSecurity: FastifyHelmetOptions["strictTransportSecurity"] =
+  {
+    maxAge: 63072000,
+    includeSubDomains: false,
+    preload: true,
+  };
+
+/**
  * Docs: https://helmetjs.github.io/#get-started
  */
 export default fp<FastifyHelmetOptions>(async (fastify) => {
   fastify.register(helmet, {
     global: true,
     contentSecurityPolicy,
+    strictTransportSecurity,
   });
 });
