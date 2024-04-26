@@ -30,7 +30,6 @@ const contentSecurityPolicy: FastifyHelmetOptions["contentSecurityPolicy"] = {
 export default fp<FastifyHelmetOptions>(async (fastify) => {
   fastify.register(helmet, {
     global: true,
-    enableCSPNonces: true, // enable csp nonces generation with default content-security-policy option
     contentSecurityPolicy,
   });
 });
