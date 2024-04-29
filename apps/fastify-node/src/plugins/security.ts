@@ -39,10 +39,6 @@ const strictTransportSecurity: FastifyHelmetOptions["strictTransportSecurity"] =
 const xFrameOptions: FastifyHelmetOptions["xFrameOptions"] = { action: "deny" };
 
 /**
- * Resource: https://helmetjs.github.io/#referrer-policy
- */
-
-/**
  * Docs: https://helmetjs.github.io/#get-started
  */
 export default fp<FastifyHelmetOptions>(async (fastify) => {
