@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { Static, Type } from "@sinclair/typebox";
 import { itemSchema } from "../schema";
-import { db, products } from "@/db";
+import { db, products } from "../../../db";
 
 const itemBodySchema = Type.Object({
   title: Type.String(),

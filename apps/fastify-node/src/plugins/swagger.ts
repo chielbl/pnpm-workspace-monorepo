@@ -1,7 +1,7 @@
 import fastifySwagger, { FastifySwaggerOptions } from "@fastify/swagger";
 import fastifySwaggerUI from "@fastify/swagger-ui";
 import fp from "fastify-plugin";
-import { itemSchema } from "@/routes/items/schema";
+import { itemSchema } from "../routes/items/schema";
 
 /**
  * This plugins adds swagger support

@@ -1,4 +1,4 @@
-import { getLogger } from "@/log-manager";
+import { getLogger } from "../log-manager";
 import { db, getCount, productsTable } from ".";
 
 const log = getLogger("seed");

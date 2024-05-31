@@ -9,9 +9,9 @@ async function startup() {
   // server.register(itemsRouter);
 
   // alive route
-  server.get("/", async (_, reply: FastifyReply) => {
-    reply.send({ hello: "server" });
-  });
+  // server.get("/", async (_, reply: FastifyReply) => {
+  //   reply.send({ hello: "server" });
+  // });
 
   // Open DB
   // const dbConn = await openDB();

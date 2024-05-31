@@ -11,8 +11,8 @@ import {
   drizzle as drizzleLocal,
 } from "drizzle-orm/postgres-js";
 import * as schema from "./schemas";
-import { getLogger } from "@/log-manager";
-import { env } from "@/env";
+import { getLogger } from "../log-manager";
+import { env } from "../env";
 
 const log = getLogger("db");
 // custom log writer

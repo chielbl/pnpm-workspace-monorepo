@@ -2,7 +2,8 @@ import path from "node:path";
 import fastifyAutoload, { AutoloadPluginOptions } from "@fastify/autoload";
 import f, { FastifyInstance } from "fastify";
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
-import log from "@/log-manager";
+import fastifyStatic from "@fastify/static";
+import log from "./log-manager";
 
 export type ServerOptions = {
   // Place your custom options for app below here.
@@ -15,6 +16,10 @@ export const createFastifyServer = async (
     logger: log.child({ name: "fastify" }),
     disableRequestLogging: Boolean(process.env.LOG_REQUEST),
   }).withTypeProvider<TypeBoxTypeProvider>();
+
+  fastify.register(fastifyStatic, {
+    root: path.join(__dirname, "../../vite-react/dist"),
+  });
 
   fastify.register(fastifyAutoload, {
     // load plugins from ./plugins

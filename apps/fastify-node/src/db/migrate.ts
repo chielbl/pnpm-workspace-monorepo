@@ -8,7 +8,7 @@ import { drizzle as drizzleVercel } from "drizzle-orm/vercel-postgres";
 
 import postgres from "postgres";
 import { drizzle as drizzleLocal } from "drizzle-orm/postgres-js";
-import { env } from "@/env";
+import { env } from "../env";
 
 console.log("POSTGRES_URL", env.DATABASE_URL);
 console.log("DATABASE_PROVIDER", env.DATABASE_PROVIDER);

@@ -2,8 +2,19 @@
   "name": "monorepo-pnpm-workspace",
   "version": "1.0.0",
   "description": "",
+  "copyFiles": [
+    {
+      "from": "packages/vite-react/dist/**",
+      "to": "packages/fastify-node/dist/src/public"
+    }
+  ],
+  "copyFilesSettings": {
+    "whenFileExists": "overwrite"
+  },
   "scripts": {
     "build": "pnpm --parallel build",
+    "postbuild": "copy-files-from-to",
+    "start": "pnpm --parallel start",
     "dev": "pnpm --parallel dev",
     "lint": "pnpm --parallel lint",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,5 +22,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "copy-files-from-to": "^3.9.1"
+  }
 }
