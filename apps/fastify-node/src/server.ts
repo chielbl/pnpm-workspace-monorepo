@@ -1,4 +1,4 @@
-import { FastifyReply } from "fastify";
+// import { FastifyReply } from "fastify";
 import log from "./log-manager";
 import { createFastifyServer } from "./fastify";
 
@@ -18,6 +18,8 @@ async function startup() {
 
   // Listen for http requests
   server.listen({ port: Number(process.env.PORT), host: process.env.HOST });
+  console.log("🚀 ~ startup ~ process.env.HOST:", process.env.HOST);
+  console.log("🚀 ~ startup ~ process.env.PORT:", process.env.PORT);
 
   // Handle graceful shutdown
   const shutdown = async () => {

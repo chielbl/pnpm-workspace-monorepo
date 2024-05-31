@@ -8,30 +8,30 @@ import { drizzle as drizzleVercel } from "drizzle-orm/vercel-postgres";
 
 import postgres from "postgres";
 import { drizzle as drizzleLocal } from "drizzle-orm/postgres-js";
-import { env } from "../env";
+// import { env } from "../env";
 
-console.log("POSTGRES_URL", env.DATABASE_URL);
-console.log("DATABASE_PROVIDER", env.DATABASE_PROVIDER);
+console.log("POSTGRES_URL", process.env.DATABASE_URL);
+console.log("DATABASE_PROVIDER", process.env.DATABASE_PROVIDER);
 
 const main = async () => {
   try {
     //
     // vercel migration
     //
-    if (env.DATABASE_PROVIDER === "pg-vercel") {
+    if (process.env.DATABASE_PROVIDER === "pg-vercel") {
       console.log("Running vercel postgres migrations...");
       // vercel requires the POSTGRES_URL environment to be set
-      process.env.POSTGRES_URL = env.DATABASE_URL;
+      // process.env.POSTGRES_URL = env.DATABASE_URL;
       const db = drizzleVercel(sql);
       await vercelMigrate(db, {
         migrationsFolder: path.join(__dirname, "./migrations"),
       });
-    } else if (env.DATABASE_PROVIDER === "pg") {
+    } else if (process.env.DATABASE_PROVIDER === "pg") {
       //
       // standard postgres migration
       //
       console.log("Running postgres migrations...");
-      const connection = postgres(env.DATABASE_URL, {
+      const connection = postgres(process.env.DATABASE_URL!, {
         // hide notice warnings
         // onnotice: (notice) => {},
       });
@@ -53,7 +53,7 @@ const main = async () => {
       // unknown migration
       //
       throw new Error(
-        `❌ Unsupported DATABASE_PROVIDER "${env.DATABASE_PROVIDER}". \
+        `❌ Unsupported DATABASE_PROVIDER "${process.env.DATABASE_PROVIDER}". \
         Please check your environment configuration.`
       );
     }

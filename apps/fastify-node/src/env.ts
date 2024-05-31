@@ -1,7 +1,7 @@
 import "dotenv/config";
 // @ts-ignore
-import { createEnv } from "@t3-oss/env-core";
-import { z } from "zod";
+// import { createEnv } from "@t3-oss/env-core";
+// import { z } from "zod";
 
 // const clientEnvSchema = {
 //   // Place your custom client environment variables below here.
@@ -41,36 +41,36 @@ import { z } from "zod";
 //   }
 // }
 
-export const env = createEnv({
-  server: {
-    DATABASE_PROVIDER: z
-      .enum(["pg", "pg-vercel"])
-      .optional()
-      .transform((provider) => provider || "pg"),
-    DATABASE_URL: z
-      .string()
-      .url()
-      .optional()
-      .transform(
-        (url) => url || "postgres://admin:root@localhost:5432/postgres"
-      ),
-    PORT: z
-      .string()
-      .optional()
-      .transform((port) => parseInt(port || "8000", 10)),
-    HOST: z
-      .string()
-      .optional()
-      .transform((host) => host || "localhost"),
-    LOG_LEVEL: z
-      .enum(["fatal", "error", "warn", "info", "debug", "trace"])
-      .optional(),
-    // .transform((v) => v || "info"),
-    LOG_REQUEST: z.string().optional(),
-    // .transform((v) => v === "true"),
-    LOG_PRETTY: z.string().optional(),
-    // .transform((v) => v === "true"),
-  },
-  runtimeEnv: process.env,
-  emptyStringAsUndefined: true,
-});
+// export const env = createEnv({
+//   server: {
+//     DATABASE_PROVIDER: z
+//       .enum(["pg", "pg-vercel"])
+//       .optional()
+//       .transform((provider) => provider || "pg"),
+//     DATABASE_URL: z
+//       .string()
+//       .url()
+//       .optional()
+//       .transform(
+//         (url) => url || "postgres://admin:root@localhost:5432/postgres"
+//       ),
+//     PORT: z
+//       .string()
+//       .optional()
+//       .transform((port) => parseInt(port || "8000", 10)),
+//     HOST: z
+//       .string()
+//       .optional()
+//       .transform((host) => host || "localhost"),
+//     LOG_LEVEL: z
+//       .enum(["fatal", "error", "warn", "info", "debug", "trace"])
+//       .optional(),
+//     // .transform((v) => v || "info"),
+//     LOG_REQUEST: z.string().optional(),
+//     // .transform((v) => v === "true"),
+//     LOG_PRETTY: z.string().optional(),
+//     // .transform((v) => v === "true"),
+//   },
+//   runtimeEnv: process.env,
+//   emptyStringAsUndefined: true,
+// });

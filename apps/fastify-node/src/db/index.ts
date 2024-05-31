@@ -12,7 +12,6 @@ import {
 } from "drizzle-orm/postgres-js";
 import * as schema from "./schemas";
 import { getLogger } from "../log-manager";
-import { env } from "../env";
 
 const log = getLogger("db");
 // custom log writer
@@ -26,12 +25,12 @@ const logger = new DefaultLogger({ writer: new MyLogWriter() });
 // eslint-disable-next-line import/no-mutable-exports
 let db: VercelPgDatabase<typeof schema> | PostgresJsDatabase<typeof schema>;
 
-if (env.DATABASE_PROVIDER === "pg-vercel") {
+if (process.env.DATABASE_PROVIDER === "pg-vercel") {
   // vercel requires the POSTGRES_URL environment to be set
-  process.env.POSTGRES_URL = env.DATABASE_URL;
+  process.env.POSTGRES_URL = process.env.DATABASE_URL;
   db = drizzleVercel(sql, { schema, logger });
 } else {
-  const connection = postgres(env.DATABASE_URL);
+  const connection = postgres(process.env.DATABASE_URL!);
   db = drizzleLocal(connection, { schema, logger });
 }
 
